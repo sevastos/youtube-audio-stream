@@ -33,9 +33,9 @@ function streamify (uri, opt, explicitYtdlOpts) {
     .format(opt.audioFormat)
     .pipe(stream)
 
-  video.on('info', function(info, format) {
-    stream.emit('info', info);
-  });
+  video.on('info', function (info, format) {
+    stream.emit('info', info)
+  })
   ffmpeg.on('error', stream.emit.bind(stream, 'error'))
   output.on('error', video.end.bind(video))
   output.on('error', stream.emit.bind(stream, 'error'))
